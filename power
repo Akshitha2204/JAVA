@@ -1,0 +1,18 @@
+//Power of a number
+import java.io.*;
+import java.util.Scanner;
+import java.lang.Math;
+public class pow
+{
+        public static void main(String args[])
+        {
+                Scanner obj = new Scanner(System.in);
+                System.out.print("Enter a number :");
+                int n = obj.nextInt();
+                System.out.print("enter pow :");
+                int b = obj.nextInt();
+                double result = Math.pow(n,b);
+                System.out.println("Power of num is :"+result);
+        }
+}
+~ 
