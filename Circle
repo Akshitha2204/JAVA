@@ -1,0 +1,18 @@
+//Area and circumference of circle
+import java.io.*;
+import java.util.Scanner;
+import java.lang.Math.*;
+public class circle
+{
+        public static void main(String args[])
+        {
+                Scanner obj = new Scanner(System.in);
+                System.out.print("Enter radius of circle : ");
+                int r = obj.nextInt();
+                float area = (float)Math.PI * r * r;
+                float cir =(float)Math.PI*2*r;
+                System.out.println("Area of circle"+area);
+                System.out.println("Circumference of circle"+cir);
+        }
+}
+
