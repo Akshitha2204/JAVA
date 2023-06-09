@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class BinaryAddition {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first binary number: ");
+        String binary1 = scanner.nextLine();
+
+        System.out.print("Enter the second binary number: ");
+        String binary2 = scanner.nextLine();
+
+        String sum = addBinaryNumbers(binary1, binary2);
+
+        System.out.println("Sum: " + sum);
+    }
+
+    public static String addBinaryNumbers(String binary1, String binary2) {
+        int decimal1 = Integer.parseInt(binary1, 2);
+        int decimal2 = Integer.parseInt(binary2, 2);
+
+        int decimalSum = decimal1 + decimal2;
+
+        return Integer.toBinaryString(decimalSum);
+    }
+}
