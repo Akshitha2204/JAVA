@@ -1,0 +1,46 @@
+//Literals
+import java.io.*;
+import java.util.Scanner;
+public class literal
+{
+        public static void main(String args[])
+        {
+                int a = 10;
+                int b = 0456;
+                int c = 0x12beac;
+                int x = 10;
+                int y = 010;
+                int z = 0X10;
+
+                //float f = 123.456;incompatible types: possible lossy conversion from double to float
+                //float f = 5.6e; error: malformed floating point literal
+
+                float f = 123.456f;
+                double d = 0777;
+                double e = 0xface;
+                //double e = 0786; integer num too large
+                //double e = 0x123.456; malformed floating point literal
+                //int x1 = 10.0; Incompatible types : lossy conversion from double to int
+
+                String s = "Hello";
+                char t = 'a';
+                char ch = 97;
+                //char t = 'ab'; unclosed character literal
+                char w = 0xface;
+                char r = 0777;
+                char h = 65535;
+                //char u = 68789;possible lossy conversion from int to char
+                char u = '\n';
+                double i = 123_456.890;
+                // double i = 1__23_4_56_.789; error: illegal underscore
+
+                System.out.println(w+" "+r+" "+h+" "+u);
+                System.out.println(t+" "+ch);
+                System.out.println(s);
+                System.out.println(x+" "+y+" "+z);
+                System.out.println(a+" "+b+ " "+c);
+                System.out.println(d +" "+f+" "+e+" "+i);
+
+
+        }
+}
