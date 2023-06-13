@@ -18,10 +18,10 @@ public class In
         System.out.print("Enter n : ");
 
         float n = obj.nextFloat();
-        float SI = (P*R*T)/100;
-        float C = P*(1+(R/100*n));
-        float a = n*T;
-        double CI = Math.pow(C,a);
+         float SI = (P*R*T)/100;
+        double amount = P * Math.pow(1 + (R/ 100 /n), n * T);
+        double CI  = amount - P;
+
         System.out.println("Simple Interst = "+SI);
         System.out.println("COmpund Interst ="+CI);
 }
