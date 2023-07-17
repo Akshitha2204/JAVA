@@ -1,0 +1,60 @@
+abstract class Shape {
+    protected int length;
+    protected int breadth;
+
+    public Shape(int length, int breadth) {
+        this.length = length;
+        this.breadth = breadth;
+    }
+
+    // Abstract method to be implemented in subclasses
+    abstract void printArea();
+}
+
+class Rectangle extends Shape {
+    public Rectangle(int length, int breadth) {
+        super(length, breadth);
+    }
+
+    @Override
+    void printArea() {
+        int area = length * breadth;
+        System.out.println("Area of Rectangle: " + area);
+    }
+}
+
+class Triangle extends Shape {
+    public Triangle(int length, int breadth) {
+        super(length, breadth);
+    }
+
+    @Override
+    void printArea() {
+        double area = 0.5 * length * breadth;
+        System.out.println("Area of Triangle: " + area);
+    }
+}
+
+class Circle extends Shape {
+    public Circle(int radius) {
+        super(radius, radius); // Assuming both length and breadth are the radius for a circle
+    }
+
+    @Override
+    void printArea() {
+        double area = Math.PI * length * length;
+        System.out.println("Area of Circle: " + area);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Rectangle rectangle = new Rectangle(4, 5);
+        Triangle triangle = new Triangle(3, 6);
+        Circle circle = new Circle(7);
+
+        rectangle.printArea();
+        triangle.printArea();
+        circle.printArea();
+    }
+}
