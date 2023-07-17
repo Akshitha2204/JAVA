@@ -1,0 +1,51 @@
+mport java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class ile {
+    public static void main(String[] args) {
+        String filePath = "file1.txt"; // Relative path (file will be created in the current directory)
+
+        try {
+            // Create a FileWriter object to write to the file
+            FileWriter fileWriter = new FileWriter(filePath);
+
+            // Wrap the FileWriter with BufferedWriter for better performance
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+            // Write data into the file
+            bufferedWriter.write("Heloo.");
+            bufferedWriter.newLine(); // Newline for the next line
+            bufferedWriter.write("Good morning");
+
+            // Close the BufferedWriter to flush and release resources
+            bufferedWriter.close();
+
+            System.out.println("Data has been written to the file successfully.");
+        } catch (IOException e) {
+            System.out.println("An error occurred while writing to the file: " + e.getMessage());
+        }
+        String filePat = "file2.txt";
+        try {
+            // Create a FileWriter object to write to the file
+            FileWriter fileWriter = new FileWriter(filePat);
+
+            // Wrap the FileWriter with BufferedWriter for better performance
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+            // Write data into the file
+            bufferedWriter.write("Byee");
+            bufferedWriter.newLine(); // Newline for the next line
+            bufferedWriter.write("Good night");
+
+            // Close the BufferedWriter to flush and release resources
+            bufferedWriter.close();
+
+            System.out.println("Data has been written to the file successfully.");
+        } catch (IOException e) {
+            System.out.println("An error occurred while writing to the file: " + e.getMessage());
+        }
+    }
+}
+
+
