@@ -1,0 +1,28 @@
+import java.io.FIle;
+class files
+{
+    public static void main(String[] args)
+    {
+        String path = "\path";
+        ListFiles(path);
+    }
+    public void ListFiles(String path)
+    {
+        File directory = new File(path);
+        File[] files = directory.ListFiles;
+        if(files != null)
+        {
+            for(File file : files)
+            {
+                if(file.isfile)
+                {
+                    System.out.println(file.getabsolutepath());
+                }
+                else if(file.isdirectory)
+                {
+                    ListFiles(file.getabsolutepath());
+                }
+            }
+        }
+    }
+}
