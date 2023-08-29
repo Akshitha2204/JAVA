@@ -1,28 +1,33 @@
-import java.io.FIle;
-class files
+import java.io.File;
+import java.io.*;
+class FileList
 {
-    public static void main(String[] args)
-    {
-        String path = "\path";
-        ListFiles(path);
-    }
-    public void ListFiles(String path)
-    {
-        File directory = new File(path);
-        File[] files = directory.ListFiles;
-        if(files != null)
+
+         public static void main(String args[])
         {
-            for(File file : files)
-            {
-                if(file.isfile)
-                {
-                    System.out.println(file.getabsolutepath());
-                }
-                else if(file.isdirectory)
-                {
-                    ListFiles(file.getabsolutepath());
-                }
-            }
+                String path = "/home/it/Documents/21wh1a1219";
+                listFiles(path);
         }
-    }
+
+        public static void listFiles(String path)
+        {
+                File d= new File(path);
+                File [] files = d.listFiles();
+                if(files != null)
+                {
+                        for(File file : files)
+                        {
+                                if(file.isFile())
+                                {
+                                        System.out.println(file.getAbsolutePath());
+                                }
+                                else if(file.isDirectory())
+                                {
+                                        listFiles(file.getAbsolutePath());
+                                }
+                        }
+
+                }
+        }
 }
+
