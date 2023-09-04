@@ -1,201 +1,89 @@
-import java.io.*;
-
-class node {
-    node prev;
+class Node {
     int data;
-    node next;
+    Node prev;
+    Node next;
 
-    // A constructor is called here
-    node(int value)
-    {
-
-        // By default previous pointer is
-        // pointed to NULL
-        prev = null;
-
-        // Value is assigned to the data
-        data = value;
-
-        // By default next pointer is pointed
-        // to NULL
-        next = null;
+    public Node(int data) {
+        this.data = data;
+        this.prev = null;
+        this.next = null;
     }
 }
 
-class GFG {
+class DoublyLinkedList {
+    Node head;
+    Node tail;
 
-    // Declaring an empty doubly linked list
-    static node head = null;
-    static node tail = null;
-    static void insertAtBeginning(int data)
-    {
-        node temp = new node(data);
+    public DoublyLinkedList() {
+        head = null;
+        tail = null;
+    }
+
+    // Insert a new node at the end of the list
+    public void insert(int data) {
+        Node newNode = new Node(data);
         if (head == null) {
-            head = temp;
-            tail = temp;
-        }
-        else {
-            temp.next = head;
-            head.prev = temp;
-            head = temp;
-        }
-    }
-
-    static void insertAtEnd(int data)
-    {
-        node temp = new node(data);
-        if (tail == null) {
-            head = temp;
-            tail = temp;
-        }
-        else {
-            tail.next = temp;
-            temp.prev = tail;
-            tail = temp;
+            head = newNode;
+            tail = newNode;
+        } else {
+            tail.next = newNode;
+            newNode.prev = tail;
+            tail = newNode;
         }
     }
 
-    static void insertAtPosition(int data, int position)
-    {
-        node temp = new node(data);
-        if (position == 1) {
-            insertAtBeginning(data);
-        }
-        else {
-            node current = head;
-            int currPosition = 1;
-            while (current != null
-                && currPosition < position) {
-                current = current.next;
-                currPosition++;
+    // Delete a given element from the list
+    public void delete(int key) {
+        Node current = head;
+        while (current != null) {
+            if (current.data == key) {
+                if (current.prev != null) {
+                    current.prev.next = current.next;
+                } else {
+                    head = current.next;
+                }
+                if (current.next != null) {
+                    current.next.prev = current.prev;
+                } else {
+                    tail = current.prev;
+                }
+                return;
             }
-            if (current == null) {
-                insertAtEnd(data);
-            }
-            else {
-                temp.next = current;
-                temp.prev = current.prev;
-                current.prev.next = temp;
-                current.prev = temp;
-            }
-        }
-    }
-
-    static void deleteAtBeginning()
-    {
-        if (head == null) {
-            return;
-        }
-
-        if (head == tail) {
-            head = null;
-            tail = null;
-            return;
-        }
-
-        node temp = head;
-        head = head.next;
-        head.prev = null;
-        temp.next = null;
-    }
-
-    static void deleteAtEnd()
-    {
-        if (tail == null) {
-            return;
-        }
-
-        if (head == tail) {
-            head = null;
-            tail = null;
-            return;
-        }
-
-        node temp = tail;
-        tail = tail.prev;
-        tail.next = null;
-        temp.prev = null;
-    }
-
-    static void deleteAtSpecificPosition(int pos)
-    {
-        if (head == null) {
-            return;
-        }
-
-        if (pos == 1) {
-            deleteAtBeginning();
-            return;
-        }
-
-        node current = head;
-        int count = 1;
-
-        while (current != null && count != pos) {
             current = current.next;
-            count++;
         }
-
-        if (current == null) {
-            System.out.println("Position wrong");
-            return;
-        }
-
-        if (current == tail) {
-            deleteAtEnd();
-            return;
-        }
-
-        current.prev.next = current.next;
-        current.next.prev = current.prev;
-        current.prev = null;
-        current.next = null;
     }
 
-    static void display(node head)
-    {
-        node temp = head;
-        while (temp != null) {
-            System.out.print(temp.data + " --> ");
-            temp = temp.next;
+    // Display the contents of the list
+    public void display() {
+        Node current = head;
+        System.out.print("Doubly Linked List: ");
+        while (current != null) {
+            System.out.print(current.data + " <-> ");
+            current = current.next;
         }
-        System.out.println("NULL");
-    }
-
-    // Drivers code
-    public static void main(String[] args)
-    {
-        insertAtEnd(1);
-        insertAtEnd(2);
-        insertAtEnd(3);
-        insertAtEnd(4);
-        insertAtEnd(5);
-
-        System.out.print("After insertion at tail: ");
-        display(head);
-
-        System.out.print("After insertion at head: ");
-        insertAtBeginning(0);
-        display(head);
-
-        insertAtPosition(6, 2);
-        System.out.print(
-            "After insertion at 2nd position: ");
-        display(head);
-
-        deleteAtBeginning();
-        System.out.print(
-            "After deletion at the beginning: ");
-        display(head);
-
-        deleteAtEnd();
-        System.out.print("After deletion at the end: ");
-        display(head);
-
-        deleteAtSpecificPosition(2);
-        System.out.print(
-            "After deletion at 2nd position: ");
-        display(head);
+        System.out.println("null");
     }
 }
 
+public class DDL {
+    public static void main(String[] args) {
+        DoublyLinkedList list = new DoublyLinkedList();
+
+        // Insert elements into the doubly linked list
+        list.insert(1);
+        list.insert(2);
+        list.insert(3);
+        list.insert(4);
+        list.insert(5);
+
+        // Display the original list
+        list.display();
+
+        int elementToDelete = 3;
+        // Delete a given element from the list
+        list.delete(elementToDelete);
+
+        // Display the list after deletion
+        list.display();
+    }
+}
