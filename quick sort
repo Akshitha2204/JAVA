@@ -1,45 +1,46 @@
-public class QuickSort{
-String names[];
-int length;
-public static void main(String[] args) {
-QuickSort obj = new QuickSort();
-String stringsList[] = {"jam", "apple", "song", "egg", "butterfly",
-"unagi", "vegas"};
-obj.sort(stringsList);
-for (String i : stringsList) {
-System.out.print(i);
-System.out.print(" \n");
+import java.util.Arrays;
+
+public class quick{
+
+    public static void quickSort(String[] names, int low, int high) {
+        if (low < high) {
+            int partitionIndex = partition(names, low, high);
+            quickSort(names, low, partitionIndex - 1);
+            quickSort(names, partitionIndex + 1, high);
+        }
+    }
+
+    public static int partition(String[] names, int low, int high) {
+        String pivot = names[high];
+        int i = low - 1;
+
+        for (int j = low; j < high; j++) {
+            if (names[j].compareTo(pivot) < 0) {
+                i++;
+                String temp = names[i];
+                names[i] = names[j];
+                names[j] = temp;
+            }
+        }
+
+        String temp = names[i + 1];
+        names[i + 1] = names[high];
+        names[high] = temp;
+
+        return i + 1;
+    }
+
+    public static void main(String[] args) {
+        String[] names = {"Frank", "Alice", "Charlie", "David","Bob",  "George","Eva", };
+
+        System.out.println("Original list of names:");
+        System.out.println(Arrays.toString(names));
+
+        quickSort(names, 0, names.length - 1);
+
+        System.out.println("\nSorted list of names (ascending order):");
+        System.out.println(Arrays.toString(names));
+    }
 }
-}
-void sort(String array[]) {
-if (array == null || array.length == 0) {
-return;
-}
-this.names = array;
-this.length = array.length;
-quickSort(0, length - 1);
-}
-void quickSort(int lowerIndex, int higherIndex) {
-int i = lowerIndex;
-int j = higherIndex;
-String pivot = this.names[lowerIndex + (higherIndex - lowerIndex) / 2];
-while (i <= j) {
-while (this.names[i].compareToIgnoreCase(pivot) < 0) {
-i++;
-}
-while (this.names[j].compareToIgnoreCase(pivot) > 0) {
-j--;
-}
-if (i <= j) {
-exchangeNames(i, j);
-i++;
-j--;
-}
-}
-if (lowerIndex < j) {
-quickSort(lowerIndex, j);
-}
-if (i < higherIndex) {
-quickSort(i, higherIndex);
-}
-}
+
+
