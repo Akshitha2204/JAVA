@@ -32,25 +32,38 @@ class DoublyLinkedList {
         }
     }
 
-    // Delete a given element from the list
-    public void delete(int key) {
-        Node current = head;
-        while (current != null) {
-            if (current.data == key) {
-                if (current.prev != null) {
-                    current.prev.next = current.next;
-                } else {
-                    head = current.next;
-                }
-                if (current.next != null) {
-                    current.next.prev = current.prev;
-                } else {
-                    tail = current.prev;
-                }
-                return;
-            }
-            current = current.next;
+        public void deleteNodeAtPosition(int position) {
+        if (head == null) {
+            System.out.println("List is empty. Cannot delete.");
+            return;
         }
+
+        Node temp = head;
+        int i = 1;
+
+        // Traverse to the node at the specified position
+        while (i < position && temp != null) {
+            temp = temp.next;
+            i++;
+        }
+
+        if (temp == null) {
+            System.out.println("Position " + position + " is out of range.");
+            return;
+        }
+
+        // Update the previous node's 'next' pointer
+        if (temp.prev != null) {
+            temp.prev.next = temp.next;
+        }
+
+        // Update the next node's 'prev' pointer
+        if (temp.next != null) {
+            temp.next.prev = temp.prev;
+        }
+
+        // Free memory for the deleted node
+        temp = null;
     }
 
     // Display the contents of the list
