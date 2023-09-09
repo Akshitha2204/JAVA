@@ -1,0 +1,12 @@
+import java.awt.*;
+import java.applet.*;
+public class Display extends Applet
+{
+    public void paint(Graphics g)
+    {
+        setForeground(Color.blue);
+        setBackground(Color.red);
+        g.drawString("Welcome to applet",50,50);
+      }
+}
+/*<applet code = "Display" width = 500 and height = 500></applet>*/
